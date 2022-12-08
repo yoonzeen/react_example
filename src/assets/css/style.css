@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+/* 
+    deep navy : #142850
+    navy : #27496D
+    bluegreen : #00909E
+    gray : #DAE1E7
+*/
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('../fonts/GmarketSansTTFLight.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('../fonts/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: 600;
+}
+* {margin:0; padding:0; font-family: 'GmarketSansLight'; color:#142850; font-weight:300; letter-spacing: -0.5px;}
+ul li {list-style-type:none;}
+html, body {background-color:#DAE1E7; font-size:14px; color:#142850;}
+a {text-decoration: none; color:#142850;}
+
+h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font-size:60px;}
+
+.mb10 {margin-bottom:10px;}
+
+.wrapper {width:800px; margin:0 auto; padding:30px 0;}
+    .wrapper.main {display:flex; height:100vh; flex-wrap:nowrap; justify-content: center; align-items: center; text-align:center;}
+.nav {margin:20px 0; position:relative; overflow:hidden;}
+.nav .navEl {min-width:35px; float:left; margin-right:20px;}
+.nav a {display:inline-block; position:relative; font-size:18px; padding:7px 0;}
+.nav .on a {color:#00909E; }
+.nav .indicator {height:1px; display:inline-block; position:absolute; left:0; top:0; background-color: #00909E; transition:all 0.3s;}
+
+/* sledge */
+.totalArea {margin-bottom:10px; text-align:right; font-size:12px;}
+.sledgeList {line-height:30px; margin-bottom:20px;}
+.sledgeRow {display:flex; border-top:1px solid #aaa;}
+.sledgeRow:last-child {border-bottom:1px solid #aaa}
+.sledgeRow .idx {width:30px;}
+.sledgeRow .sigunNm {width:57px;}
+.sledgeRow .bizplcNm {width:345px;}
+.sledgeRow .addr {font-size:12px;}
+.badge {line-height:normal; display:inline-block; text-align:center; background-color:#999; padding:3px 4px; font-size:10px; color:#fff; border-radius:4px; vertical-align: 2px; margin-left:7px;}
+.badge.red {background-color: #b85454;}
+.badge.green {background-color: #5eb07a;}
+.badge.orange {background-color: #c78a63;}
+
+#myMap {margin:0 auto;}
+/* pagination */
+.pagination {margin:0 auto; text-align:center; margin-bottom:30px;}
+.pagination > span {width:25px; height:25px; border-radius:50%; line-height:25px; display:inline-block; margin-right:6px; cursor:pointer;}
+.pagination > span:last-child {margin-right:0;}
+.pagination .prev {margin-right:10px;}
+.pagination .next {margin-left:4px;}
+.pagination .on { background-color:#00909E; color:#fff; }
+.pagination .hidden {visibility: hidden;}
+
+/* formPage */
+.formPage input {width:250px;}
+

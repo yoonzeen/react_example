@@ -1,13 +1,27 @@
 import React from 'react';
+import 'assets/css/style.css';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main from './components/common/Main';
+import Layout from './components/Layout';
+import ValidatorFormPage from './pages/validator/FormPage';
+import MoviesListPage from './pages/movies/ListPage';
+import SledgeListPage from './pages/sledge/ListPage';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Main />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/validator" element={<ValidatorFormPage />} />
+          <Route path="/movies" element={<MoviesListPage />} />
+          <Route path="/sledge" element={<SledgeListPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
