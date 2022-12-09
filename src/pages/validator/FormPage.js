@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { ValidationGroup, Validate } from 'mui-validate';
 
 const FormPage = () => {
+    const userNameRef = useRef();
+    const userPwRef = useRef();
+    const userEmailRef = useRef();
     const [inputs, setInputs] = useState({
         userName: '',
         userPw: '',
@@ -18,18 +21,24 @@ const FormPage = () => {
     const checkStrVaild = (str) => {
         return str && str.replace(/ /g, "").length;
     };
+    const focusInput = (ref, name) => {
+        ref.current.focus();
+        if(name === '이름' || name === '이메일') alert(`${name}을 입력해주세요.`);
+        else if (name === '비밀번호') alert(`${name}를 입력해주세요.`);
+    }
 
     const onSubmit = () => {
+        console.log(error)
         if (!checkStrVaild(inputs.userName)) {
-            alert('이름을 입력해주세요.');
+            focusInput(userNameRef, '이름');
             return;
         }
         if (!checkStrVaild(inputs.userPw)) {
-            alert('비밀번호를 입력해주세요.');
+            focusInput(userPwRef, '비밀번호');
             return;
         }
         if (!checkStrVaild(inputs.userEmail)) {
-            alert('이메일을 입력해주세요.');
+            focusInput(userEmailRef, '이메일');
             return;
         }
     };
@@ -37,23 +46,23 @@ const FormPage = () => {
     return (
         <div className='formPage'>
             <div className='mb10'>
-                <ValidationGroup initialValidation='noisy'>   
+                <ValidationGroup>   
                     <Validate required regex={/^[가-힣]*$/}>
-                        <TextField ref={userName} helperText="한글로 입력하세요." label="Name" name="userName" value={inputs.userName} onChange={checkInput}/>
+                        <TextField inputRef={userNameRef} helperText="한글로 입력하세요." label="Name" name="userName" value={inputs.userName} onChange={checkInput}/>
                     </Validate>
                 </ValidationGroup>
             </div>
             <div className='mb10'>
                 <ValidationGroup>  
                     <Validate required regex={/^\d{0,5}$/}>
-                        <TextField ref={userPw} label="Password" name="userPw" type="password" value={inputs.userPw} onChange={checkInput} />
+                        <TextField inputRef={userPwRef} label="Password" name="userPw" type="password" value={inputs.userPw} onChange={checkInput} />
                     </Validate>
                 </ValidationGroup>
             </div>
             <div className='mb10'>
                 <ValidationGroup>  
                     <Validate required>
-                        <TextField ref={userEmail} label="Email" name="userEmail" type="email" value={inputs.userEmail} onChange={checkInput} />
+                        <TextField inputRef={userEmailRef} label="Email" name="userEmail" type="email" value={inputs.userEmail} onChange={checkInput} />
                     </Validate>
                 </ValidationGroup>
             </div>  
