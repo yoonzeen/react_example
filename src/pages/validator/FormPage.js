@@ -1,72 +1,62 @@
 import React, { useRef, useState } from 'react';
-import { Button, TextField } from '@mui/material';
-import { ValidationGroup, Validate } from 'mui-validate';
+import { Button } from '@mui/material';
+import ValidateInput from 'components/validator/ValidateInput';
+import regex from 'assets/data/regex';
 
 const FormPage = () => {
     const userNameRef = useRef();
     const userPwRef = useRef();
     const userEmailRef = useRef();
+    const [isAllError, setIsAllError] = useState({
+        userName: false,
+        userPw: false,
+        userEmail: false
+    });
     const [inputs, setInputs] = useState({
         userName: '',
         userPw: '',
         userEmail: ''
-    })
-    const checkInput = (e) => {
-        const { name, value } = e.target;
-        setInputs({
-            ...inputs,
-            [name]: value
-        })
-    };
+    });
     const checkStrVaild = (str) => {
         return str && str.replace(/ /g, "").length;
     };
     const focusInput = (ref, name) => {
+        setIsAllError({...isAllError, [name] : true});
         ref.current.focus();
-        if(name === '이름' || name === '이메일') alert(`${name}을 입력해주세요.`);
-        else if (name === '비밀번호') alert(`${name}를 입력해주세요.`);
+        console.log()
+        if(name === 'userName' || name === 'userEmail') console.log(`${name}을 입력해주세요.`);
+        else if (name === 'userPw') console.log(`${name}를 입력해주세요.`);
+        console.log(isAllError)
     }
 
     const onSubmit = () => {
-        console.log(error)
+        console.log(inputs)
         if (!checkStrVaild(inputs.userName)) {
-            focusInput(userNameRef, '이름');
-            return;
+            focusInput(userNameRef, 'userName');
         }
         if (!checkStrVaild(inputs.userPw)) {
-            focusInput(userPwRef, '비밀번호');
-            return;
+            focusInput(userPwRef, 'userPw');
         }
         if (!checkStrVaild(inputs.userEmail)) {
-            focusInput(userEmailRef, '이메일');
-            return;
+            focusInput(userEmailRef, 'userEmail');
         }
+        console.log(isAllError)
+        if (isAllError.userName || isAllError.userPw || isAllError.userEmail) { console.log('잘못된 곳이 있습니다.') };
     };
+    
 
     return (
         <div className='formPage'>
             <div className='mb10'>
-                <ValidationGroup>   
-                    <Validate required regex={/^[가-힣]*$/}>
-                        <TextField inputRef={userNameRef} helperText="한글로 입력하세요." label="Name" name="userName" value={inputs.userName} onChange={checkInput}/>
-                    </Validate>
-                </ValidationGroup>
+                <ValidateInput inputRef={userNameRef} helperText="한글로 입력하세요." label="Name" name="userName" type="text" regexCheck={regex.userName} inputs={inputs} setInputs={setInputs} isAllError={isAllError} setIsAllError={setIsAllError} />
             </div>
             <div className='mb10'>
-                <ValidationGroup>  
-                    <Validate required regex={/^\d{0,5}$/}>
-                        <TextField inputRef={userPwRef} label="Password" name="userPw" type="password" value={inputs.userPw} onChange={checkInput} />
-                    </Validate>
-                </ValidationGroup>
+                <ValidateInput inputRef={userPwRef} label="Password" name="userPw" type="password" regexCheck={regex.userPw} inputs={inputs} setInputs={setInputs} isAllError={isAllError} setIsAllError={setIsAllError}  />
             </div>
             <div className='mb10'>
-                <ValidationGroup>  
-                    <Validate required>
-                        <TextField inputRef={userEmailRef} label="Email" name="userEmail" type="email" value={inputs.userEmail} onChange={checkInput} />
-                    </Validate>
-                </ValidationGroup>
+                <ValidateInput inputRef={userEmailRef} label="Email" name="userEmail" type="email" regexCheck={regex.userEmail} inputs={inputs} setInputs={setInputs} isAllError={isAllError} setIsAllError={setIsAllError} />
             </div>  
-            <Button type="submit" variant="contained" onClick={onSubmit} >submit</Button>
+            <Button type="submit" variant="contained" onClick={onSubmit}>submit</Button>
         </div>
     );
 };
