@@ -20,14 +20,16 @@
     src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
     font-weight: 600;
 }
-* {margin:0; padding:0; font-family: 'GmarketSansLight'; color:#142850; font-weight:300; letter-spacing: -0.5px;}
+* {margin:0; padding:0; font-family: 'GmarketSansLight'; color:#142850; font-weight:300; letter-spacing: -0.2px;}
 ul li {list-style-type:none;}
 html, body {background-color:#DAE1E7; font-size:14px; color:#142850;}
 a {text-decoration: none; color:#142850;}
 
 h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font-size:60px;}
 
+.mt30 {margin-top:30px;}
 .mb10 {margin-bottom:10px;}
+.ml14 {margin-left:14px}
 
 .wrapper {width:800px; margin:0 auto; padding:30px 0;}
     .wrapper.main {display:flex; height:100vh; flex-wrap:nowrap; justify-content: center; align-items: center; text-align:center;}
@@ -63,4 +65,11 @@ h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font
 
 /* formPage */
 .formPage input {width:250px;}
+.formPage .desc h3 {font-weight:400; font-size:25px;}
+.formPage .desc p {margin:10px 0 20px; line-height:32px; font-size:16px;}
+.formPage .desc .sm {font-size:13px;}
 
+/* modal */
+.modal.custom {font-family: 'GmarketSansLight'; outline:none; border:1px solid #DAE1E7;}
+.modal h2 {font-size:20px; font-family: 'GmarketSansLight';}
+.modal p {font-family: 'GmarketSansLight';}
