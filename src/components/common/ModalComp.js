@@ -7,7 +7,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 500,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -28,7 +28,9 @@ const ModalComp = ({title, contents, open, setOpen}) => {
                         <CloseIcon/>
                     </IconButton>
                     <Typography component="h2">{title}</Typography>
-                    <Typography component="p">{contents}</Typography>
+                    <div className='mt10'>
+                        <Typography component="div">{contents}</Typography>
+                    </div>
                 </Box>
             </Modal>
         </>

@@ -3,7 +3,6 @@ import axios from 'axios'
 import { SLEDGE_KEY } from 'assets/data/data';
 import ListItem from './ListItem';
 import Loading from 'components/common/Loading';
-// import Map from './Map';
 import Pagination from 'components/common/Pagination';
 
 const List = () => {
@@ -19,26 +18,33 @@ const List = () => {
                     setTotal(res.data.Sledge[0].head[0].list_total_count);
                     setSledgeList(res.data.Sledge[1].row);
                     setLoading(false);
+                    console.log(res);
                 }).catch((error) => console.log(error));
         };
         if(pIndex) sledgeApi();
     }, [pIndex]);
     return (
         <div>
-            {loading ? <Loading /> :
+            {loading ? 
+                <Loading />  :
                 <>
-                    <div className='totalArea'>
-                        총 {total} 곳
+                    <div className='sledgeListNav flex'>
+                        <div className='sledgeListTab'>
+                            <span>전체</span>
+                            <span>영업 중인 썰매장</span>
+                            <span>공립</span>
+                            <span>사립</span>
+                        </div>
+                        <span className='totalArea'>
+                            총 {total} 곳
+                        </span>
                     </div>
                     <div className='sledgeList'>
-                        
                         {sledgeList.map((el, idx) => <ListItem key={idx} el={el} idx={idx} pSize={pSize} pIndex={pIndex} />)}
-                        
                     </div>
-                </>
+                    <Pagination pIndex={pIndex} setPIndex={setPIndex} pSize={pSize} total={total} />
+                </> 
             }
-            <Pagination pIndex={pIndex} setPIndex={setPIndex} pSize={pSize} total={total} />
-            {/* <Map /> */}
         </div>
     );
 };
