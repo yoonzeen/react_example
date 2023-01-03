@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Pagination = ({ pIndex, setPIndex, pSize, total }) => {
+const Pagination = ({ selectedMenu, pIndex, setPIndex, showingSize, total }) => {
     const [pageList, setPageList] = useState([1, 2, 3, 4, 5]);
     const lastPageIndex = Math.ceil(total / 5);
-    const lastPageRange = Math.ceil(total / pSize / 10) * 2;
+    const lastPageRange = Math.ceil(total / showingSize / 10) * 2;
     const pagingFast = (way) => {
-        if (way === 'prev') pSize = pSize * (-1);
-        if (pIndex + pSize > lastPageIndex) {
+        if (way === 'prev') showingSize = showingSize * (-1);
+        if (pIndex + showingSize > lastPageIndex) {
             setPIndex(lastPageIndex);
         } else {
-            setPIndex(pIndex + pSize);
+            setPIndex(pIndex + showingSize);
         }
-        setPageList(pageList.map((el) => el + pSize));
+        setPageList(pageList.map((el) => el + showingSize));
     };
+    useEffect(() => {
+        setPageList([1, 2, 3, 4, 5]);
+    }, [selectedMenu]);
     return (
         <div className='pagination'>
             <span className={`prev ${pIndex < 6 ? 'hidden' : ''}`} onClick={() => pagingFast('prev')}>&lt;</span>

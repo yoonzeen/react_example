@@ -31,6 +31,8 @@ h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font
 .mt10 {margin-top:10px;}
 .mt30 {margin-top:30px;}
 .mb10 {margin-bottom:10px;}
+.mr05 {margin-right:5px;}
+.mr10 {margin-right:10px;}
 .ml10 {margin-left:10px;}
 .ml14 {margin-left:14px}
 .txtC {text-align:center}
@@ -53,9 +55,12 @@ h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font
 .nav .indicator {height:1px; display:inline-block; position:absolute; left:0; top:0; background-color: #00909E; transition:all 0.3s;}
 
 /* sledge */
-.totalArea {margin-bottom:10px; text-align:right; font-size:12px;}
+.totalArea {margin-bottom:5px; text-align:right; font-size:12px;}
 .sledgeList {line-height:30px; margin-bottom:20px;}
-.sledgeListNav {width:100%; justify-content: space-between;}
+.sledgeListNav {width:100%; justify-content: space-between; align-items: center;}
+.sledgeListTab {margin-bottom:5px;}
+.sledgeListTab span {display:inline-block; padding:5px 10px; cursor:pointer; margin-right:5px; border-radius:5px; background-color: transparent;}
+.sledgeListTab .on { background-color: #00909E; color:#fff; border:none;}
 .sledgeRow {display:flex; border-top:1px solid #aaa;}
 .sledgeRow:last-child {border-bottom:1px solid #aaa}
 .sledgeRow .idx {width:30px;}
