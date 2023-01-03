@@ -46,7 +46,7 @@ h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font
 
 .flex {display:flex;}
 
-.wrapper {width:800px; margin:0 auto; padding:30px 0;}
+.wrapper {max-width:800px; margin:0 auto; padding:30px 16px;}
     .wrapper.main {display:flex; height:100vh; flex-wrap:nowrap; justify-content: center; align-items: center; text-align:center;}
 .nav {margin:20px 0; position:relative; overflow:hidden;}
 .nav .navEl {min-width:35px; float:left; margin-right:20px;}
@@ -61,13 +61,14 @@ h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font
 .sledgeListTab {margin-bottom:5px;}
 .sledgeListTab span {display:inline-block; padding:5px 10px; cursor:pointer; margin-right:5px; border-radius:5px; background-color: transparent;}
 .sledgeListTab .on { background-color: #00909E; color:#fff; border:none;}
-.sledgeRow {display:flex; border-top:1px solid #aaa;}
+.sledgeRow {display:flex; border-top:1px solid #aaa; align-items: center;}
 .sledgeRow:last-child {border-bottom:1px solid #aaa}
 .sledgeRow .idx {width:30px;}
 .sledgeRow .sigunNm {width:57px;}
 .sledgeRow .bizplcNm {width:350px;}
+.sledgeRow .bizplcNm > span:first-child {margin-right:7px;}
 .sledgeRow .addr {font-size:11px;}
-.badge {line-height:normal; display:inline-block; text-align:center; background-color:#999; padding:3px 4px; font-size:10px; color:#fff; border-radius:4px; vertical-align: 2px; margin-left:7px;}
+.badge {line-height:normal; display:inline-block; text-align:center; background-color:#999; padding:3px 4px; font-size:10px; color:#fff; border-radius:4px; vertical-align: 2px; }
 .badge.red {background-color: #b85454;}
 .badge.green {background-color: #5eb07a;}
 .badge.orange {background-color: #c78a63;}
@@ -95,3 +96,18 @@ h2 {font-weight:400; margin-bottom:10px; font-family: 'Nerko One', cursive; font
 .modal.custom {font-family: 'GmarketSansLight'; outline:none; border:1px solid #DAE1E7;}
 .modal h2 {font-size:20px; font-family: 'GmarketSansLight';}
 .modal p {font-family: 'GmarketSansLight';}
+
+
+@media (max-width: 767px) {
+    .sledgeList {line-height:17px;}
+    .sledgeRow {font-size:11px; padding:3px 0;}
+    .sledgeRow .idx {width:20px;}
+    .sledgeRow .sigunNm {font-size:11px; width:50px;}
+    .sledgeRow .bizplcNm {width:130px;}
+    .sledgeRow .addr {font-size:10px; width:190px;}
+    .badge {padding:2px 3px;}
+}
+
+@media (max-width:462px) {
+    
+}
